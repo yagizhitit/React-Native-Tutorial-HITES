@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView } from "react-native";
 import { Link } from "expo-router";
 
+import { createUser } from "../../lib/appwrite";
 import { images } from "../../constants";
 import FormField from "../../components/FormField";
 import { CustomButton } from "../../components/CustomButton";
@@ -17,7 +18,9 @@ const SignUp = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submit = () => {};
+  const submit = () => {
+    createUser();
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">
