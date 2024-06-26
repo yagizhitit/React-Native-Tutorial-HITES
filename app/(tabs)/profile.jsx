@@ -7,9 +7,10 @@ import EmptyState from "../../components/EmptyState";
 import VideoCard from "../../components/VideoCard";
 import InfoBox from "../../components/InfoBox";
 import useAppwrite from "../../lib/useAppwrite";
-import { getUserPosts } from "../../lib/appwrite";
+import { getUserPosts, signOut } from "../../lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import { TouchableOpacity } from "react-native";
+import { router } from "expo-router";
 
 import { icons } from "../../constants";
 
@@ -17,7 +18,13 @@ const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
   const { data: posts, refetch } = useAppwrite(() => getUserPosts(user.$id));
 
-  const logout = () => {};
+  const logout = async () => {
+    await signOut();
+    setUser(null);
+    setIsLoggedIn(false);
+
+    router.replace("/sign-in");
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">
