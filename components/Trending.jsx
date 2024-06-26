@@ -31,7 +31,6 @@ const zoomOut = {
 const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
 
-  console.log("TrendingItem item: ", item.video); // Ekledim
 
   return (
     <Animatable.View

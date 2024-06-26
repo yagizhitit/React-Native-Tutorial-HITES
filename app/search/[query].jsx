@@ -18,7 +18,7 @@ const Search = () => {
     refetch();
   }, [query]);
 
-  console.log(posts);
+
 
   return (
     <SafeAreaView className="bg-primary h-full">
